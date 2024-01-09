@@ -1,8 +1,7 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-action.json
 name: build
-
 on:
-  push:
+  pull_request:
     branches:
       - main
 
