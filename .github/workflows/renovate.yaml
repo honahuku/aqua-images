@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-action.json
+name: renovate
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  renovate-debug:
+    runs-on: ubuntu-latest
+    container:
+        image: renovate/renovate:37.128
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v2
+
+      - name: debug renovate
+        run: |
+            renovate-config-validator
