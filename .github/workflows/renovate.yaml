@@ -11,6 +11,9 @@ jobs:
     container:
         image: ghcr.io/renovatebot/renovate:37.128.4
     steps:
+      - uses: aquaproj/aqua-installer@v2.2.0
+        with:
+          aqua_version: v2.16.4
       - name: Check Out Repo
         run: |
           gh repo clone ${{ secrets.GITHUB_REPOSITORY }}
