@@ -9,10 +9,10 @@ jobs:
   renovate-debug:
     runs-on: ubuntu-latest
     container:
-        image: renovate/renovate:37.128
+        image: ghcr.io/renovatebot/renovate:37.128.4
     steps:
       - name: Check Out Repo
         uses: actions/checkout@v4
       - name: debug renovate
         run: |
-            renovate-config-validator
+          renovate-config-validator
