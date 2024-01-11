@@ -8,11 +8,10 @@ on:
 jobs:
   renovate-debug:
     runs-on: ubuntu-latest
-    container:
-        image: ghcr.io/renovatebot/renovate:37.128.4
     steps:
       - name: Check Out Repo
         uses: actions/checkout@v4
       - name: debug renovate
         run: |
+          npm install --global renovate
           renovate-config-validator
