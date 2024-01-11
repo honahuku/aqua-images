@@ -12,8 +12,7 @@ jobs:
         image: renovate/renovate:37.128
     steps:
       - name: Check Out Repo
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v4
       - name: debug renovate
         run: |
             renovate-config-validator
