@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-action.json
+name: renovate
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  renovate-debug:
+    runs-on: ubuntu-latest
+    container:
+        image: ghcr.io/renovatebot/renovate:37.128.4
+    steps:
+      - uses: aquaproj/aqua-installer@v2.2.0
+        with:
+          aqua_version: v2.16.4
+      - name: Check Out Repo
+        run: |
+          gh repo clone ${{ secrets.GITHUB_REPOSITORY }}
+          cd $(echo ${{ secrets.GITHUB_REPOSITORY }} | cut -d'/' -f2)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: debug renovate
+        run: |
+          renovate-config-validator
